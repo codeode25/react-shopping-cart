@@ -1,14 +1,19 @@
 import { Toaster } from "react-hot-toast"
 import { Route, Routes } from "react-router"
 import Products from "./pages/Products/Products"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Products />}/>
-      </Routes>
-      <Toaster />
+      <QueryClientProvider client={queryClient}>
+        <Routes>
+          <Route path="/" element={<Products />}/>
+        </Routes>
+        <Toaster />
+      </QueryClientProvider>
     </>
   )
 }
