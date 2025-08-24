@@ -1,9 +1,13 @@
 import { Toaster } from "react-hot-toast"
+import { Route, Routes } from "react-router"
+import Products from "./pages/Products/Products"
 
 function App() {
   return (
     <>
-      <h1 className="text-5xl">My Shop</h1>
+      <Routes>
+        <Route path="/" element={<Products />}/>
+      </Routes>
       <Toaster />
     </>
   )
