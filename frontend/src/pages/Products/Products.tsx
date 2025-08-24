@@ -9,7 +9,7 @@ const Products: React.FC = () => {
     })
 
     if (isLoading) return <p className="p-6">Loading....</p>
-    if (error) return <p className="p-6 text-red-500"></p>
+    if (error) return <p className="p-6 text-red-500">Error..</p>
 
     return <>
         <h1 className="text-3xl font-bold mb-8">Our Products</h1>
