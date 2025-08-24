@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
 import { fetchProduct } from "../../services/product";
+import ProductSkeleton from "./ProductSkeleton";
 
 const Product: React.FC = () => {
     const {id} = useParams<{id: string | undefined}>()
@@ -11,7 +12,11 @@ const Product: React.FC = () => {
         enabled: !!id
     })
 
-    if (isLoading) return <p className="p-6">Loading....</p>
+    if (isLoading) {
+        return <div className="grid grid-cols-2 gap-2">
+            <ProductSkeleton />
+        </div>
+    }
     if (error) return <p className="p-6 text-red-500">Error..</p>
     if (!product) return <p className="p-6 text-red-500">There is no product..</p>
 
