@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import type { Product } from "../types";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 
 export type CartItem = Product & {quantity: number};
@@ -21,7 +22,7 @@ export function useCart() {
 }
 
 export const CartProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
-    const [cart, setCart] = useState<CartItem[]>([]);
+    const [cart, setCart] = useLocalStorage<CartItem[]>('cart', [])
 
     const addToCart = (product: Product) => {
         setCart((prev) => {
